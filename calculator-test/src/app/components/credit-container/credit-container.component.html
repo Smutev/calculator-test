@@ -1,1 +1,35 @@
-<div>Credit card</div>
+<div class="credit-container__container container">
+  <div class="credit-container__block">
+    <div class="credit-container__text">
+      Возврат до :
+    </div>
+    <div class="credit-container__text">
+      {{ returnDate | date: dateFormat }}
+    </div>
+  </div>
+  <div class="credit-container__block">
+    <div class="credit-container__text">
+      Кредит :
+    </div>
+    <div class="credit-container__text">
+      {{ creditSum | number: "1.2-2":"en-US" | noComma }}
+    </div>
+  </div>
+  <div class="credit-container__block credit-container__block--border-bottom">
+    <div class="credit-container__text">
+      Проценты, грн :
+    </div>
+    <div class="credit-container__text">
+      {{ percentToPay | number: "1.2-2":"en-US" | noComma }}
+    </div>
+  </div>
+  <div class="credit-container__block">
+    <div class="credit-container__text credit-container__text--bold">
+      Всего к возврату :
+    </div>
+    <div class="credit-container__text credit-container__text--bold">
+      {{ creditSum + percentToPay | number: "1.2-2":"en-US" | noComma }}
+    </div>
+  </div>
+  <app-promocode-button></app-promocode-button>
+</div>

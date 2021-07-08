@@ -1,0 +1,45 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  @include text(18px, 21px);
+  border: none;
+  color: $white;
+  padding: 11px 50px;
+  width: 350px;
+  background: linear-gradient(90deg, #915fff 0%, #6e36ea 100%);
+  cursor: pointer;
+
+  &__title {
+    display: inline-block;
+    width: 200px;
+  }
+
+  &__value,
+  &__currency {
+    margin-left: 5px;
+    font-weight: bold;
+  }
+
+  &__value {
+    width: 65px;
+  }
+
+  &__currency {
+    width: 20px;
+  }
+
+  &:disabled {
+    background: $grey;
+    cursor: not-allowed;
+  }
+}

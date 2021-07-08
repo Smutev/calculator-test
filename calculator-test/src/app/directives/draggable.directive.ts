@@ -12,7 +12,7 @@ import {
 import { fromEvent, Subscription } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { DOCUMENT } from "@angular/common";
-import {DragElementOutputInterface} from "../shared/drag-element-output.interface";
+import { DragElementOutputInterface } from "../shared/drag-element-output.interface";
 
 @Directive({
   selector: "[appDraggable]"
@@ -22,7 +22,9 @@ export class DraggableDirective implements OnInit, AfterViewInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   @Input() appDraggable: HTMLElement | HTMLBodyElement;
-  @Output() onChangeThumbPosition: EventEmitter<DragElementOutputInterface> = new EventEmitter<DragElementOutputInterface>();
+  @Output() onChangeThumbPosition: EventEmitter<
+    DragElementOutputInterface
+  > = new EventEmitter<DragElementOutputInterface>();
 
   constructor(
     private elementRef: ElementRef,
@@ -36,7 +38,10 @@ export class DraggableDirective implements OnInit, AfterViewInit, OnDestroy {
       throw new Error("There is no draggable element");
     } else {
       this.element = this.elementRef.nativeElement as HTMLElement;
-      this.onChangeThumbPosition.emit({maxWidth: this.appDraggable.clientWidth, currentPosition: 0});
+      this.onChangeThumbPosition.emit({
+        maxWidth: this.appDraggable.clientWidth,
+        currentPosition: 0
+      });
       this.initDrag();
     }
   }
@@ -59,9 +64,9 @@ export class DraggableDirective implements OnInit, AfterViewInit, OnDestroy {
       minBoundX + this.appDraggable.offsetWidth - this.element.offsetWidth;
 
     const dragStartSub = dragStart$.subscribe((event: MouseEvent) => {
-      const firstTranslatePropPart = this.element.style.transform.split('(')[1];
+      const firstTranslatePropPart = this.element.style.transform.split("(")[1];
       if (firstTranslatePropPart) {
-        currentX = parseInt(firstTranslatePropPart.split('px')[0]);
+        currentX = parseInt(firstTranslatePropPart.split("px")[0]);
       }
 
       initialX = event.clientX - currentX;
@@ -73,7 +78,7 @@ export class DraggableDirective implements OnInit, AfterViewInit, OnDestroy {
 
         this.onChangeThumbPosition.emit({
           maxWidth: maxBoundX,
-          currentPosition: currentX,
+          currentPosition: currentX
         });
 
         this.element.style.transform = `translate(${currentX}px, -50%)`;

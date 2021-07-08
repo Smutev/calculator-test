@@ -8,16 +8,22 @@
         [min]="min"
         [max]="max"
         [(ngModel)]="rangeValue"
-        [ngStyle]="{'width': inputWidth + 'px'}"
+        [ngStyle]="{ width: inputWidth + 'px' }"
         (change)="handleInputChange($event)"
       />
       <span class="range-selector__units">{{ entityName }}</span>
     </label>
   </div>
 
-  <div class="range-selector__values-container range-selector__values-container--top">
-    <span class="range-selector__values-item">{{entityValuesNames.thirdValue}}</span>
-    <span class="range-selector__values-item">{{entityValuesNames.fourthValue}}</span>
+  <div
+    class="range-selector__values-container range-selector__values-container--top"
+  >
+    <span class="range-selector__values-item">{{
+      entityValuesNames.thirdValue
+    }}</span>
+    <span class="range-selector__values-item">{{
+      entityValuesNames.fourthValue
+    }}</span>
   </div>
 
   <div class="range-selector__range-container" #draggableContainer>
@@ -40,8 +46,14 @@
     ></div>
   </div>
 
-  <div class="range-selector__values-container range-selector__values-container--bottom">
-    <span class="range-selector__values-item">{{entityValuesNames.firstValue}}</span>
-    <span class="range-selector__values-item">{{entityValuesNames.secondValue}}</span>
+  <div
+    class="range-selector__values-container range-selector__values-container--bottom"
+  >
+    <span class="range-selector__values-item">{{
+      entityValuesNames.firstValue
+    }}</span>
+    <span class="range-selector__values-item">{{
+      entityValuesNames.secondValue
+    }}</span>
   </div>
 </div>

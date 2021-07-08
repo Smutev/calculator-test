@@ -1,4 +1,4 @@
 export interface DragElementOutputInterface {
-  maxWidth: number,
-  currentPosition: number
+  maxWidth: number;
+  currentPosition: number;
 }

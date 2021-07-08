@@ -37,7 +37,7 @@ export class RangeSelectorComponent implements OnInit, ControlValueAccessor {
 
   public entityName: string = "";
   private firstLoad: boolean = true;
-  private timeType: string = "day";
+  private timeType: string = "days";
 
   @Input() public min: number = 50;
   @Input() public max: number = 30000;
@@ -61,7 +61,7 @@ export class RangeSelectorComponent implements OnInit, ControlValueAccessor {
   }
 
   public writeValue(value: number | { type: string; value: number }): void {
-    this.rangeValue = typeof value === 'number' ?  value : value.value;
+    this.rangeValue = typeof value === "number" ? value : value.value;
   }
 
   public registerOnChange(fn: any): void {
@@ -111,7 +111,7 @@ export class RangeSelectorComponent implements OnInit, ControlValueAccessor {
 
     const entityPerPx = this.maxWidth / 2 / DAYS_IN_FIRST_PART;
     this.rangeValue = Math.round(this.currentPosition / entityPerPx);
-    this.timeType = 'day';
+    this.timeType = "days";
   }
 
   public handleLikeSecondPart(): void {
@@ -125,7 +125,7 @@ export class RangeSelectorComponent implements OnInit, ControlValueAccessor {
     this.rangeValue = Math.round(
       this.currentPosition / entityPerPx - DAYS_TO_MINUS
     );
-    this.timeType = 'week';
+    this.timeType = "week";
   }
 
   public handleInputChange(e: Event): void {
@@ -139,7 +139,7 @@ export class RangeSelectorComponent implements OnInit, ControlValueAccessor {
       this.maxWidth / this.max / (this.isDivided ? 2 : 1)
     );
 
-    this.timeType = 'day';
+    this.timeType = "days";
     this.setValue();
   }
 

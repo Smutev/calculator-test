@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RangeValuesNamesInterface } from "../../shared/range-values-names.interface";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { PercentCounterService } from "../../services/percent-counter.service";
+import { FormInterface } from "../../shared/form.interface";
 
 @Component({
   selector: "app-range-container",
@@ -25,35 +27,52 @@ export class RangeContainerComponent implements OnInit {
   };
 
   public form: FormGroup;
-  public minSum: number = 50;
-  public maxSum: number = 30000;
-  public minTerm: number = 1;
-  public maxTerm: number = 31;
+  public minSum = 50;
+  public maxSum = 30000;
+  public minTerm = 1;
+  public maxTerm = 31;
 
-  constructor(private fb: FormBuilder) {}
+  public isButtonDisabled: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private percentCounterService: PercentCounterService
+  ) {}
 
   public ngOnInit(): void {
+    this.createForm();
+    this.form.valueChanges.subscribe((res: FormInterface) => {
+      this.percentCounterService.sub$.next(res),
+        (this.isButtonDisabled = this.form.valid);
+    });
+  }
+
+  public createForm() {
     this.form = this.fb.group({
       sum: [
         0,
         Validators.compose([
           Validators.required,
           Validators.min(this.minSum),
-          Validators.min(this.maxSum)
+          Validators.max(this.maxSum)
         ])
       ],
       term: [
-        {type: 'day', value: 0},
+        { type: "days", value: 0 },
         Validators.compose([
           Validators.required,
           Validators.min(this.minTerm),
-          Validators.min(this.maxTerm)
+          Validators.max(this.maxTerm)
         ])
       ]
     });
   }
 
-  log() {
-    console.log(this.form.value);
+  public submitForm(): void {
+    if (this.form.invalid) {
+      return;
+    }
+
+    alert("Кредит успешно оформлен");
   }
 }

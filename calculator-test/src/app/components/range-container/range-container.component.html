@@ -1,4 +1,4 @@
-<div class="range-container__container">
+<div class="range-container__container container">
   <form [formGroup]="form" class="range-container__form">
     <app-range-selector
       formControlName="sum"
@@ -16,7 +16,6 @@
       [max]="31"
       [inputWidth]="35"
     ></app-range-selector>
-    <app-button></app-button>
-    <button (click)="log()">smth</button>
+    <app-button (onFormSubmit)="submitForm()"></app-button>
   </form>
 </div>

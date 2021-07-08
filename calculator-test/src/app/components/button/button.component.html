@@ -1,0 +1,5 @@
+<button class="button" [disabled]="!buttonValue" (click)="submit()">
+  <span class="button__title">{{ buttonTitle }}</span>
+  <span class="button__value" *ngIf="buttonValue">{{ buttonValue }}</span>
+  <span class="button__currency" *ngIf="buttonValue">{{ currency }}</span>
+</button>
