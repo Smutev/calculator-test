@@ -1,0 +1,19 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+app-range-selector {
+  width: 100%;
+}
+
+.range-container {
+  &__container {
+    @include flex($fd: column, $ai: flex-start);
+    width: 550px;
+    background-color: $background-white;
+    padding: 26px 50px 30px 44px;
+  }
+
+  &__form {
+    width: 100%;
+  }
+}

@@ -1,0 +1,14 @@
+@mixin flex($jc: center, $ai: center, $fd: row, $fw: nowrap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+  flex-wrap: $fw;
+}
+
+@mixin text($fz: 18px, $lh: 21px, $fw: normal, $ta: center) {
+  font-size: $fz;
+  line-height: $lh;
+  font-weight: $fw;
+  text-align: $ta;
+}

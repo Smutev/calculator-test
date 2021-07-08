@@ -1,0 +1,47 @@
+<div class="range-selector__container">
+  <div class="range-selector__value-block">
+    <label class="range-selector__title">
+      {{ entityTitle }}:
+      <input
+        class="range-selector__input"
+        type="number"
+        [min]="min"
+        [max]="max"
+        [(ngModel)]="rangeValue"
+        [ngStyle]="{'width': inputWidth + 'px'}"
+        (change)="handleInputChange($event)"
+      />
+      <span class="range-selector__units">{{ entityName }}</span>
+    </label>
+  </div>
+
+  <div class="range-selector__values-container range-selector__values-container--top">
+    <span class="range-selector__values-item">{{entityValuesNames.thirdValue}}</span>
+    <span class="range-selector__values-item">{{entityValuesNames.fourthValue}}</span>
+  </div>
+
+  <div class="range-selector__range-container" #draggableContainer>
+    <div class="range-selector__range-break"></div>
+    <div class="range-selector__range-track-container">
+      <div
+        class="range-selector__range-track range-selector__range-track--first-part"
+        #firstPart
+      ></div>
+      <div
+        class="range-selector__range-track range-selector__range-track--second-part"
+        #secondPart
+      ></div>
+    </div>
+    <div
+      class="range-selector__range-thumb"
+      [appDraggable]="draggableContainer"
+      (onChangeThumbPosition)="handleRangeChange($event)"
+      #thumb
+    ></div>
+  </div>
+
+  <div class="range-selector__values-container range-selector__values-container--bottom">
+    <span class="range-selector__values-item">{{entityValuesNames.firstValue}}</span>
+    <span class="range-selector__values-item">{{entityValuesNames.secondValue}}</span>
+  </div>
+</div>

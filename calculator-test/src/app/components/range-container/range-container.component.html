@@ -1,0 +1,22 @@
+<div class="range-container__container">
+  <form [formGroup]="form" class="range-container__form">
+    <app-range-selector
+      formControlName="sum"
+      [entityValuesNames]="sumRangeValues"
+      [isDivided]="false"
+    ></app-range-selector>
+    <app-range-selector
+      formControlName="term"
+      [entityTitle]="titleForDateRange"
+      [entityStartName]="entityStartNameForDateRange"
+      [changedEntityName]="entityEndNameForDateRange"
+      [entityValuesNames]="dateRangeValues"
+      [isTypeNeeded]="true"
+      [min]="1"
+      [max]="31"
+      [inputWidth]="35"
+    ></app-range-selector>
+    <app-button></app-button>
+    <button (click)="log()">smth</button>
+  </form>
+</div>

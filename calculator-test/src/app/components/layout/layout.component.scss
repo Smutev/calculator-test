@@ -1,0 +1,13 @@
+@import "../../../assets/styles/mixins";
+
+app-range-container {
+  margin-right: 10px;
+}
+
+.layout {
+
+  &__container {
+    height: 100vh;
+    @include flex();
+  }
+}

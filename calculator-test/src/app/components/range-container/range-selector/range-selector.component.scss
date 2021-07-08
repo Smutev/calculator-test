@@ -1,0 +1,120 @@
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/variables";
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.range-selector {
+  &__container {
+    @include flex($jc: flex-start, $ai: flex-start, $fd: column);
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  &__value-block {
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    @include text(18px, 21px, $ta: left);
+  }
+
+  &__range {
+    &-container {
+      position: relative;
+      width: 100%;
+      height: 4px;
+      border-radius: 10px;
+      background: linear-gradient(
+        to right,
+        rgba(61, 174, 43, 0.2) 50%,
+        rgba(145, 95, 255, 0.2) 50%
+      );
+    }
+
+    &-track {
+      width: 0;
+      height: 4px;
+
+      &-container {
+        display: flex;
+      }
+      &--first-part {
+        background: linear-gradient(to right, #3DAE2B 0%, #29999F 100%);
+      }
+      &--second-part {
+        background: linear-gradient(to right, #29999F 0%, #915FFF 100%);
+      }
+    }
+
+    &-break {
+      position: absolute;
+      left: 50%;
+      bottom: -7px;
+      height: 17px;
+      width: 1px;
+      background-color: $pre-white;
+    }
+
+    &-thumb {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 3px solid $green;
+      background: $background-white;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__values {
+    &-container {
+      width: 50%;
+      @include flex($jc: space-between);
+
+      &--top {
+        align-self: flex-end;
+        margin-bottom: 7px;
+      }
+
+      &--bottom {
+        margin-top: 7px;
+      }
+    }
+
+    &-item {
+      @include text(12px, 14px);
+      color: $grey;
+    }
+  }
+
+  &__input {
+    width: 82px;
+    padding-bottom: 3px;
+    padding-right: 5px;
+    @include text(16px, 19px, 600, $ta: right);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-color: #000000;
+    border-width: 1px;
+    margin-left: 14px;
+    margin-right: 8px;
+    outline: none;
+  }
+
+  &__units {
+    @include text(16px, 19px, 600);
+  }
+}
